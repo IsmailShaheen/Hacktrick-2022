@@ -17,7 +17,7 @@ setup(name='human_aware_rl',
         'matplotlib',
         'requests',
         'pygame',
-        'numpy==1.19.5',
+        'numpy',
         'seaborn==0.9.0',
         'ray[rllib]==0.8.5'
       ],

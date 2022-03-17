@@ -87,7 +87,7 @@ def my_config():
     seeds = [0]
 
     # Placeholder for random for current trial
-    seed = None
+    seed = 2229
 
     # Number of gpus the central driver should use
     num_gpus = 0 if LOCAL_TESTING else 1
@@ -107,10 +107,10 @@ def my_config():
     shared_policy = True
 
     # Number of training iterations to run
-    num_training_iters = 420 if not LOCAL_TESTING else 2
+    num_training_iters = 500 if not LOCAL_TESTING else 2
 
     # Stepsize of SGD.
-    lr = 5e-5
+    lr = 5e-4
 
     # Learning rate schedule.
     lr_schedule = None
@@ -133,8 +133,8 @@ def my_config():
 
     # Entropy bonus coefficient, will anneal linearly from _start to _end over _horizon steps
     entropy_coeff_start = 0.2
-    entropy_coeff_end = 0.1
-    entropy_coeff_horizon = 3e5
+    entropy_coeff_end = 1e-2
+    entropy_coeff_horizon = 3e6
 
     # Initial coefficient for KL divergence.
     kl_coeff = 0.2
@@ -203,12 +203,12 @@ def my_config():
 
     # Rewards the agent will receive for intermediate actions
     rew_shaping_params = {
-        "PLACEMENT_IN_POT_REW": 3,
-        "DISH_PICKUP_REWARD": 3,
+        "PLACEMENT_IN_CONSTRUCTION_SITE_REW": 3,
+        "CONTAINER_PICKUP_REWARD": 3,
         "SOUP_PICKUP_REWARD": 5,
-        "DISH_DISP_DISTANCE_REW": 0,
-        "POT_DISTANCE_REW": 0,
-        "SOUP_DISTANCE_REW": 0,
+        "CONTAINER_DISP_DISTANCE_REW": 0,
+        "CONSTRUCTION_SITE_DISTANCE_REW": 0,
+        "SOUP_DISTANCE_REW": 0
     }
 
     # Max episode length
@@ -218,7 +218,7 @@ def my_config():
     reward_shaping_factor = 1.0
 
     # Linearly anneal the reward shaping factor such that it reaches zero after this number of timesteps
-    reward_shaping_horizon = float('inf')
+    reward_shaping_horizon = 2.5e6
 
     # bc_factor represents that ppo agent gets paired with a bc agent for any episode
     # schedule for bc_factor is represented by a list of points (t_i, v_i) where v_i represents the 
