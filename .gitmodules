@@ -1,0 +1,4 @@
+[submodule "overcooked_ai"]
+	path = overcooked_ai
+	url = https://github.com/Omarnael/overcooked_ai
+	branch = master
